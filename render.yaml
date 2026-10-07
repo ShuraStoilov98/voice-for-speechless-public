@@ -1,0 +1,25 @@
+# Optional paid hosting. Review the current plan and disk price before creating.
+services:
+  - type: web
+    name: voice-for-speechless-backend
+    runtime: docker
+    dockerfilePath: ./server/Dockerfile
+    dockerContext: ./server
+    plan: starter
+    healthCheckPath: /health
+    numInstances: 1
+    disk:
+      name: usage-counters
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ELEVENLABS_VOICE_ID
+        sync: false
+      - key: INSTALLATION_TOKEN_HASHES
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false

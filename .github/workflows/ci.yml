@@ -1,0 +1,39 @@
+name: Verify
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run check:public
+      - run: node scripts/check-doc-links.mjs
+      - run: npm run export:web
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - run: bash scripts/scan-secrets.sh
+  server:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm audit --omit=dev --audit-level=high

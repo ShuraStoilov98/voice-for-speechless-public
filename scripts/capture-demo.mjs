@@ -1,0 +1,26 @@
+import { chromium } from '@playwright/test';
+import { mkdir, copyFile } from 'node:fs/promises';
+
+await mkdir('test-results/demo-capture', { recursive: true });
+const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH });
+const context = await browser.newContext({ viewport: { width: 390, height: 844 }, recordVideo: { dir: 'test-results/demo-capture', size: { width: 390, height: 844 } } });
+const page = await context.newPage();
+await page.goto(process.env.DEMO_URL || 'http://localhost:8082');
+await page.getByText('Voice for Speechless', { exact: true }).waitFor();
+await page.waitForTimeout(500);
+await page.getByRole('textbox', { name: 'Your message', exact: true }).pressSequentially('Thank you for being here.', { delay: 65 });
+await page.waitForTimeout(600);
+await page.getByRole('button', { name: 'Clear message' }).click();
+await page.getByRole('button', { name: 'Български', exact: true }).click();
+await page.getByRole('textbox', { name: 'Вашето съобщение', exact: true }).fill('Благодаря, че сте тук.');
+await page.waitForTimeout(700);
+await page.getByRole('button', { name: 'English', exact: true }).click();
+await page.getByRole('button', { name: 'Voice settings', exact: true }).click();
+await page.waitForTimeout(600);
+await page.getByRole('button', { name: 'Close settings' }).click();
+await page.waitForTimeout(500);
+const video = page.video();
+await context.close();
+await copyFile(await video.path(), 'docs/images/interaction.webm');
+await browser.close();
+console.info('Captured real browser typing/language/settings interaction; no voice or provider requests included.');

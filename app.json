@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "Voice for Speechless",
+    "slug": "voice-for-speechless",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": { "image": "./assets/splash-icon.png", "resizeMode": "contain", "backgroundColor": "#f7f9f8" },
+    "ios": { "supportsTablet": true, "infoPlist": { "ITSAppUsesNonExemptEncryption": false } },
+    "android": {
+      "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#f7f9f8" },
+      "blockedPermissions": ["android.permission.RECORD_AUDIO"],
+      "edgeToEdgeEnabled": true
+    },
+    "web": { "favicon": "./assets/favicon.png" },
+    "plugins": [["expo-audio", { "microphonePermission": false, "recordAudioAndroid": false }], "expo-secure-store", "expo-asset"]
+  }
+}
