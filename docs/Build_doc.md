@@ -1,6 +1,6 @@
 # Build And Distribution
 
-The source/demo does not require App Store submission. The public derivative has not been submitted as a new native release. A prior private prototype's beta does not establish that this version has passed device testing or review.
+The source/demo does not require App Store submission. This version has not been submitted as a native release; device testing and store review are separate steps.
 
 ## Your Own App Identity
 
@@ -41,8 +41,8 @@ Do not publish a public TestFlight link or App Store badge until a verified link
 
 The container/host deployment has not been verified merely by writing these files. A host with a different disk-permission model may need adjustment. Local server tests use synthetic providers and verify quota persistence separately.
 
-## Updating The Original Private Beta
+## Updating An Existing Private App
 
-Keep the private app's bundle identifier, EAS project, signing identity, and App Store Connect record. Port the reviewed client/backend changes into a private integration branch there, then provision its device credentials. Test before uploading an update. Increment its own release/build versions according to that app's record; do not substitute the fork's identities.
+If adapting this template for an existing app, keep that app's bundle identifier, EAS project, signing identity, and App Store Connect record. Port the reviewed client/backend changes into a private integration branch there, then provision its device credentials. Test before uploading an update. Increment its own release/build versions according to that app's record; do not substitute the fork's identities.
 
-Coordinate revocation of the old embedded provider keys with that update. Older builds can stop working when the keys are revoked. Preserve the original repository privately; importing its Git history into this public derivative would reintroduce the private recordings.
+If older builds embedded provider keys, coordinate revocation with the update; those builds can stop working when the keys are revoked. Keep private source history and recordings out of any public fork.

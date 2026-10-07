@@ -2,7 +2,7 @@
 
 Type a message. Hear it spoken. Connect your own voice when you're ready.
 
-Built for a family member who temporarily could not speak, this project started as a small Bulgarian communication app. The original private prototype has an iOS beta. This repository is a generalized derivative with an account-free demo and a backend for a consenting personal voice; this version has not been submitted to the App Store.
+Originally built to help someone communicate during recovery from surgery. This version includes an account-free demo and a backend for connecting a consenting personal voice.
 
 <img src="docs/images/phone-demo.png" alt="Actual web demo at a phone-sized viewport: message input, Speak button and quick phrases" width="390" />
 
@@ -73,7 +73,7 @@ Connected mode needs internet, private provider access, and a configured backend
 
 The backend targets one server instance with a persistent local disk. Daily usage allowances bound requests and characters, not a guaranteed dollar spend. Provider-side limits still need account setup. Multi-user enrollment and multiple independently deployed replicas need a different shared authorization/quota design.
 
-Native device playback, paid live integration, and hosted deployment must be verified before distributing a new connected beta. Remaining dependency advisories in Expo build tooling are documented in the [release report](docs/PUBLIC_RELEASE_REPORT.md).
+Native device playback, paid live integration, and hosted deployment must be verified before distributing a connected native release. Remaining dependency advisories in Expo build tooling are documented in the [release report](docs/PUBLIC_RELEASE_REPORT.md).
 
 ## License
 

@@ -53,12 +53,13 @@ Patched Sharp and PostCSS were installed, and `xcode`'s UUID dependency was narr
 
 These findings remain visible. The assessment is limited to this source/demo deployment contract: paid backend has none of these dependencies; build tooling processes reviewed local assets/config and is not a public service. Public source can be reviewed with these documented limits, but a new distributed native release still needs its device/account checks. Rerun audits before publication; registry findings can change.
 
-## Required Owner Decisions
+## Approved Scope And Remaining Gates
 
-1. Approve the public title, UI, and conservative family-origin story. Supply any approved details, actual beta status/link, and measurable usage/outcomes; no invented metrics will be added.
-2. Decide whether source/demo publication is sufficient initially, or whether a live connected demo is also required. The second option needs provider/hosting setup and separate live tests.
-3. Test the intended native device and consenting voice before distributing a new connected beta. Browser playback fixtures do not establish that voice quality or silent-mode behavior.
-4. Confirm the destination account/repository name and a verified private security reporting channel, then authorize publication of the reviewed candidate.
+The owner approved the title and current UI on 2026-10-07. The origin story is a brief anonymous recovery sentence; no patient names, recognizable media, or private distribution links are included. The approved destination is `ShuraStoilov98/voice-for-speechless-public`, separate from the private predecessor.
+
+Source/demo publication does not require paid hosting or store submission. The remaining publication gates are explicit launch authorization, fresh scans/audits, review of the new remote inventory and first CI run, and configuration of GitHub security reporting when the repository is public. No publication action has been taken.
+
+Before any future connected native release, test the intended device and consenting voice and complete provider/hosting setup. Browser playback fixtures do not establish native voice quality or silent-mode behavior.
 
 ## Publication Procedure
 
@@ -66,8 +67,8 @@ Publish only this independent candidate after review. Leave the predecessor priv
 
 1. Check the candidate's staged/tracked inventory, tree, and history. Run `npm run check:public` and `bash scripts/scan-secrets.sh`; inspect media and dependency notes. Re-run verification if final edits change behavior.
 2. Create a new, empty GitHub repository in the selected account. Prefer creating it private for a last review, push only this clean history, and change visibility after explicit approval. Do not fork/push the private predecessor's history or use its existing remote.
-3. Verify the remote file/history inventory, first CI run, README rendering/media, MIT detection, and private vulnerability reporting before switching visibility.
+3. Verify the remote file/history inventory, first CI run, README rendering/media, and MIT detection before switching visibility. Once public, enable private vulnerability reporting and available secret scanning/push protection. [GitHub private reporting setup](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository)
 4. Add the project description and topics such as `accessibility`, `text-to-speech`, `react-native`, `expo`, `voice-cloning`, and `bulgarian`. Pin it on the owner's profile if selected.
-5. Add an approved beta/demo link only after checking its version and access status. Optional live deployment and App Store submission are separate actions.
+5. Optionally host this sanitized system-voice demo and add its verified URL. Do not link or distribute the private predecessor. Paid live deployment and App Store submission are separate actions.
 
 Git commands depend on the chosen destination and are intentionally not executed during this migration. The owner's private workspace handoff records the candidate path, independent commit, backup, and exact commands for the selected route.
