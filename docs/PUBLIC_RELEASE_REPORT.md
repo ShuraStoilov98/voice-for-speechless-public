@@ -1,6 +1,6 @@
 # Public Release Verification
 
-Prepared locally on 2026-10-07. No repository was published, no paid backend was deployed, and no new store build was submitted. This derivative uses an independent Git history; its private predecessor's history and recordings are not included.
+Updated 2026-10-07. The cleaned candidate is available in a new **private review repository** at [ShuraStoilov98/voice-for-speechless-public](https://github.com/ShuraStoilov98/voice-for-speechless-public). Neither repository has been made public, no paid backend was deployed, and no new store build was submitted. The owner will review and change visibility manually in GitHub. This derivative uses an independent Git history; its private predecessor's history and recordings are not included.
 
 ## Implemented
 
@@ -13,7 +13,7 @@ Prepared locally on 2026-10-07. No repository was published, no paid backend was
 
 ## Verification
 
-Local verification is complete. External account/device checks remain pending and are not passes.
+Local verification and the first remote CI run are complete. Paid-provider, hosting and native-device checks remain pending and are not passes.
 
 | Check | Result |
 | --- | --- |
@@ -33,10 +33,10 @@ Local verification is complete. External account/device checks remain pending an
 | Clean independent history | Passed: Gitleaks scanned the new root commit with all refs; no predecessor history or remote imported |
 | Fresh-checkout lockfile installs | Passed: separate app/server `npm ci --offline --no-audit --no-fund` using cached registry packages, with no source-checkout dependency fallback |
 | Fresh-checkout behavior | Passed: TypeScript, 7 client tests, 11 server tests, documentation/public-file checks and production web export, with no environment files |
-| Remote CI | Prepared; not run because publication is explicitly deferred |
+| Remote CI | Both jobs passed in [Verify run 37678620374](https://github.com/ShuraStoilov98/voice-for-speechless-public/actions/runs/37678620374) on implementation commit `987fa5d465b24d006eac6416336d5e3ae68b3134`: installs, TypeScript, 18 client/backend tests, 9 browser tests, production web export, docs/public checks, Gitleaks files/history and backend production audit |
 | Native hardware, paid providers, hosted Docker | Pending owner account/device checks; not represented by mocks |
 
-The production web build was served locally for the final screenshots, interaction clip and 9 browser tests. The headless browser tests verify UI behavior and synthetic connected audio, not an audible system/clone voice on a real device. CI commands were exercised locally; the actual GitHub workflow still awaits the first authorized push. A harmless Node warning about module-type inference occurs in the TypeScript logic tests; tests pass.
+The production web build was served locally for the final screenshots, interaction clip and 9 browser tests. The headless browser tests verify UI behavior and synthetic connected audio, not an audible system/clone voice on a real device. The actual GitHub workflow passed on the first authorized private push without provider secrets. A harmless Node warning about module-type inference occurs in the TypeScript logic tests; tests pass. Check the latest workflow run after any subsequent edits.
 
 ## Dependency Findings
 
@@ -57,7 +57,7 @@ These findings remain visible. The assessment is limited to this source/demo dep
 
 The owner approved the title and current UI on 2026-10-07. The origin story is a brief anonymous recovery sentence; no patient names, recognizable media, or private distribution links are included. The approved destination is `ShuraStoilov98/voice-for-speechless-public`, separate from the private predecessor.
 
-Source/demo publication does not require paid hosting or store submission. The remaining publication gates are explicit launch authorization, fresh scans/audits, review of the new remote inventory and first CI run, and configuration of GitHub security reporting when the repository is public. No publication action has been taken.
+Source/demo publication does not require paid hosting or store submission. Fresh pre-push scans and audits passed within the documented dependency limits; the new remote's clean history/file inventory and private visibility were verified, and its first CI run passed. Remaining steps are the owner's review/manual visibility change and configuration of GitHub security reporting once public. The agent is not authorized to change visibility.
 
 Before any future connected native release, test the intended device and consenting voice and complete provider/hosting setup. Browser playback fixtures do not establish native voice quality or silent-mode behavior.
 
@@ -66,9 +66,9 @@ Before any future connected native release, test the intended device and consent
 Publish only this independent candidate after review. Leave the predecessor private. A protected branch in a public repository does not hide its historical recordings.
 
 1. Check the candidate's staged/tracked inventory, tree, and history. Run `npm run check:public` and `bash scripts/scan-secrets.sh`; inspect media and dependency notes. Re-run verification if final edits change behavior.
-2. Create a new, empty GitHub repository in the selected account. Prefer creating it private for a last review, push only this clean history, and change visibility after explicit approval. Do not fork/push the private predecessor's history or use its existing remote.
+2. The new standalone private review repository has been created and only this clean history pushed. Do not fork/push the private predecessor's history or use its existing remote. The owner will perform the final visibility change manually; the agent must leave both repositories private.
 3. Verify the remote file/history inventory, first CI run, README rendering/media, and MIT detection before switching visibility. Once public, enable private vulnerability reporting and available secret scanning/push protection. [GitHub private reporting setup](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository)
 4. Add the project description and topics such as `accessibility`, `text-to-speech`, `react-native`, `expo`, `voice-cloning`, and `bulgarian`. Pin it on the owner's profile if selected.
 5. Optionally host this sanitized system-voice demo and add its verified URL. Do not link or distribute the private predecessor. Paid live deployment and App Store submission are separate actions.
 
-Git commands depend on the chosen destination and are intentionally not executed during this migration. The owner's private workspace handoff records the candidate path, independent commit, backup, and exact commands for the selected route.
+The owner's private workspace handoff records the candidate path, independent commits, private backup, completed remote checks, and manual GitHub launch steps. No backend deployment or store submission is included in source publication.
