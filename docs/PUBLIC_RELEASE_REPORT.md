@@ -13,7 +13,7 @@ Prepared locally on 2026-10-07. No repository was published, no paid backend was
 
 ## Verification
 
-This table is updated as verification finishes. "Pending" is not a pass.
+Local verification is complete. External account/device checks remain pending and are not passes.
 
 | Check | Result |
 | --- | --- |
@@ -30,9 +30,13 @@ This table is updated as verification finishes. "Pending" is not a pass.
 | Gitleaks 8.30.1 file scan | Passed; scanner download matched pinned official checksum |
 | Gitleaks export scan | Passed over 11.28 MB of exported data |
 | Documentation paths | All local Markdown links and image paths resolve; 9 actual screenshots and one real interaction clip reviewed |
-| Clean-history scan and fresh-checkout installs | Pending final candidate commit |
+| Clean independent history | Passed: Gitleaks scanned the new root commit with all refs; no predecessor history or remote imported |
+| Fresh-checkout lockfile installs | Passed: separate app/server `npm ci --offline --no-audit --no-fund` using cached registry packages, with no source-checkout dependency fallback |
+| Fresh-checkout behavior | Passed: TypeScript, 7 client tests, 11 server tests, documentation/public-file checks and production web export, with no environment files |
 | Remote CI | Prepared; not run because publication is explicitly deferred |
 | Native hardware, paid providers, hosted Docker | Pending owner account/device checks; not represented by mocks |
+
+The production web build was served locally for the final screenshots, interaction clip and 9 browser tests. The headless browser tests verify UI behavior and synthetic connected audio, not an audible system/clone voice on a real device. CI commands were exercised locally; the actual GitHub workflow still awaits the first authorized push. A harmless Node warning about module-type inference occurs in the TypeScript logic tests; tests pass.
 
 ## Dependency Findings
 
